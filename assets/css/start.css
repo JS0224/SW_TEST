@@ -1,0 +1,69 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Noto Sans KR", sans-serif;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+}
+
+.responsive-image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#top-image {
+    margin-top: 30px;
+    width: 340px;
+    height: 480px;
+}
+
+#bottom-image {
+    width: 340px;
+    height: 130px;
+}
+
+/* Media query for screens smaller than 600px 
+@media (max-width: 600px) {
+    .responsive-image {
+        width: 300px;
+        height: 300px;
+    }
+}
+
+/* Media query for screens larger than 600px 
+@media (min-width: 601px) {
+    .responsive-image {
+        width: 500px;
+        height: 500px;
+    }
+}*/
+
+/* Start button */
+.footer {
+    text-align: center;
+}
+
+.start-button {
+    width: 280px;
+    height: 84px;
+    background-color: #ff9bdc;
+    color: #fff;
+    font-size: 32px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s; /* Added background-color transition */
+}
+
+.start-button:hover,
+.start-button:focus {
+    background-color: #aa89ff; /* Change background color on hover and focus */
+    /*transform: translate3d(0, 4px, 0);*/
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Add focus style to improve accessibility */
+.start-button:focus {
+    outline: none;
+}
