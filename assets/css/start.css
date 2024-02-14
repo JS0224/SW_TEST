@@ -4,27 +4,41 @@ body {
     font-family: "Noto Sans KR", sans-serif;
     justify-content: center;
     align-items: center;
-    background-color: #f0f0f0;
+    background-color: #ffffff;
 }
 
-.responsive-image {
+/* Header */
+.header {
+    margin-top: 68px;
+    text-align: center;
+}
+
+.title {
+    font-size: 32px;
+    color: #000;
+}
+
+.subtitle {
+    font-size: 18px;
+    margin-top: 28px;
+    color: #333;
+}
+
+
+/* Content */
+.content {
+    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-#top-image {
-    margin-top: 30px;
-    width: 340px;
-    height: 480px;
+.responsive-image {
+    max-width: 100%;
+    height: auto;
 }
 
-#bottom-image {
-    width: 340px;
-    height: 130px;
-}
-
-/* Media query for screens smaller than 600px 
+/* Media query for screens smaller than 600px */
 @media (max-width: 600px) {
     .responsive-image {
         width: 300px;
@@ -32,38 +46,40 @@ body {
     }
 }
 
-/* Media query for screens larger than 600px 
+/* Media query for screens larger than 600px */
 @media (min-width: 601px) {
     .responsive-image {
         width: 500px;
         height: 500px;
     }
-}*/
-
-/* Start button */
-.footer {
-    text-align: center;
 }
 
 .start-button {
     width: 280px;
     height: 84px;
-    background-color: #ff9bdc;
+    background-color: #000;
     color: #fff;
     font-size: 32px;
     border: none;
     cursor: pointer;
+    margin-top: 40px;
     transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s; /* Added background-color transition */
 }
 
 .start-button:hover,
 .start-button:focus {
-    background-color: #aa89ff; /* Change background color on hover and focus */
-    /*transform: translate3d(0, 4px, 0);*/
+    background-color: #E5FB60; /* Change background color on hover and focus */
+    color: #000;
+    transform: translate3d(0, 4px, 0);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 /* Add focus style to improve accessibility */
 .start-button:focus {
     outline: none;
+}
+
+.description {
+    font-size: 16px;
+    margin-top: 50px;
 }
