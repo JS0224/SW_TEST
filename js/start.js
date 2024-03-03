@@ -11,7 +11,6 @@ var test_id = null
 var lan = null
 
 function setupInformation(test_info, test_id, lan) {
-    console.log("TEst info : ", test_info)
     title.innerText = test_info.title
     subtitle.innerText = test_info.subtitle
     description.innerText = test_info.description
