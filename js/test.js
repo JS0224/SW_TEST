@@ -16,7 +16,7 @@ var lan = null
 var questions = []
 var currentQuestionIndex = 0;
 
-const selectedButtonNumbers = [];
+const selectedTagNumberList = {};
 
 // Function to update the question and question number
 function updateQuestion() {
@@ -24,11 +24,11 @@ function updateQuestion() {
         const currentQuestion = questions[currentQuestionIndex];
         questionNumberElement.textContent = `Q ${currentQuestionIndex + 1}`;
         questionTextElement.textContent = currentQuestion.question;
-        remainQuestion.textContent = `${currentQuestionIndex+1} / ${questions.length}`;
+        remainQuestion.textContent = `${currentQuestionIndex + 1} / ${questions.length}`;
 
         // Update answer buttons
-        button1.textContent = currentQuestion.answers[0];
-        button2.textContent = currentQuestion.answers[1];
+        button1.textContent = "Yes";
+        button2.textContent = "No";
 
         const progressPercent = ((currentQuestionIndex + 1) / questions.length) * 100;
         document.getElementById('progress').style.width = `${progressPercent}%`;
@@ -37,6 +37,8 @@ function updateQuestion() {
     }
 }
 
+
+// *************** NEXT Page ****************
 // Loading
 function showLoading() {
     mainContainer.style.display = "none";
@@ -50,7 +52,10 @@ function showLoading() {
 
 // Go to next page
 function goToNextPage() {
-    const type =  getType()
+    console.log(selectedTagNumberList)
+    const type = getType()
+
+    console.log("TYPE: ", type)
     window.location.href = "result.html?test_id=" + test_id + "&lan=" + lan + "&type=" + type
 }
 
@@ -58,33 +63,32 @@ function goToNextPage() {
 function getType() {
     const algorithm = getAlgorithm()
 
-    const count_of_ones = selectedButtonNumbers.reduce((count, currentValue) => {
-        return count + (currentValue === 1 ? 1 : 0);
-    }, 0);
+    const resultCharacters = algorithm(selectedTagNumberList)
 
-    let i = 0
-    for (; i < algorithm.num.length; i++) {
-        const diff = count_of_ones - algorithm.num[i]
-        if (diff <= 1) { // 1 이하로 차이나야 함
-            break
-        }
-    }
-
-    return algorithm.types[i]
+    console.log(resultCharacters)
+    let sortedCharacters = resultCharacters.sort();
+    let result = sortedCharacters.join('');
+  
+    return result;
 }
 
-// Setup
+// ******** Setup *********
 function addEventOnAnswerButtons() {
     // Event listener for Button 1
     button1.addEventListener('click', () => {
-        selectedButtonNumbers[currentQuestionIndex] = 1
+        let currentTag = questions[currentQuestionIndex].tag 
+
+        if (selectedTagNumberList.hasOwnProperty(currentTag)) {
+            selectedTagNumberList[currentTag]++;
+        } else {
+            selectedTagNumberList[currentTag] = 1;
+        }
         currentQuestionIndex++;
         updateQuestion();
     });
 
     // Event listener for Button 2
     button2.addEventListener('click', () => {
-        selectedButtonNumbers[currentQuestionIndex] = 2
         currentQuestionIndex++;
         updateQuestion();
     });
